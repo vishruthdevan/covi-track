@@ -137,3 +137,5 @@ LOGIN_REQUIRED_URL = "users:account"
 LOGOUT_REDIRECT_URL = "users:login"
 
 BASE_COUNTRY = "IN"
+
+GEOIP_PATH = BASE_DIR / 'geoip2'
