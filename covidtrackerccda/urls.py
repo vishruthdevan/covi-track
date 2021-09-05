@@ -21,8 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('users.urls')),
-    path('covid-tracker/', include('covidtracker.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('users.urls')),
+    path('covid-tracker/', include('covidtracker.urls')),
 ]
 
 if settings.DEBUG:

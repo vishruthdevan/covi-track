@@ -31,15 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'covidtracker.apps.CovidtrackerConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    'covidtracker.apps.CovidtrackerConfig',
-    'users.apps.UsersConfig',
+    'django.contrib.staticfiles',   
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'covidtrackerccda.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'covidtrackerccda/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,9 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GOOGLE_API_KEY = 'AIzaSyAeqhC54PRgxH-2WUdHZ5e1DXyeSmvwIpk'
 
-LOGIN_URL = "users:login"
-LOGIN_REQUIRED_URL = "users:account"
-LOGOUT_REDIRECT_URL = "users:login"
+LOGIN_REDIRECT_URL = "covidtracker:index"
 
 BASE_COUNTRY = "IN"
 
