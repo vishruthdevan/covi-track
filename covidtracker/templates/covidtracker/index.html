@@ -1,15 +1,23 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid tracker</title>
-</head>
-<body>
+{% load static %}
+    {% block title %}Covid tracker{% endblock title %}
+
+{% block head %}  
+  <style>
+    #map {
+      height: 100%;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+{% endblock head %}
+
+{% block content %}
     <p>This is the main page</p>
-    <a href="{% url 'logout' %}">Logout</a>
-</body>
-</html>
+    <a href="{% url 'index' %}">Home</a>
+<div id="map"></div>
+{% endblock content %}
