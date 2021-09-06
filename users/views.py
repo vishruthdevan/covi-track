@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from .forms import UserForm
+from .models import UserProfile
 # Create your views here.
 
 class Register(View):
@@ -14,6 +15,9 @@ class Register(View):
         form = UserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            userprofile = UserProfile.objects.get(user=user)
+            userprofile.email = request.POST.get('email')
+            userprofile.save()
             # login(request, user)
             return redirect("login")
         return render(request, 'registration/register.html', {'form' : form})
