@@ -1,3 +1,4 @@
+from django.db.models.base import Model
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -14,6 +15,11 @@ class UserForm(UserCreationForm):
         model = get_user_model()
         fields = ("username", "email", "password1", "password2")
 
+class InfoForm(forms.ModelForm):
+    
+    class Meta:
+        model = UserProfile
+        fields = ("address", "town", "state", "post_code", "country")
 
 
 class AuthForm(AuthenticationForm):
