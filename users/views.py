@@ -25,6 +25,22 @@ class Register(View):
             #authenticate user then login
             user = authenticate(username=username, password=password)
             login(self.request, user)
-            return redirect("covidtracker:index")
+            return redirect("users:register_info")
             
         return render(request, 'registration/register.html', {'form' : form})
+
+class Info(View):
+    def get(self, request, *args, **kwargs):
+        form = InfoForm()
+        return render(request, 'registration/register_info.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        userprofile = UserProfile.objects.get(user=request.user)
+        form = InfoForm(request.POST, instance=userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect("covidtracker:index")
+        
+        return render(request, 'registration/register_info.html', {'form': form})
+        
+
