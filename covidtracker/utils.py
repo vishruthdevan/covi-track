@@ -11,10 +11,8 @@ def get_ip_address(request):
 
 def get_geo(ip):
     g = GeoIP2()
-    country = g.country(ip)
-    city = g.city(ip)
     lat, lon = g.lat_lon(ip)
-    return country, city, lat, lon
+    return lat, lon
 
 def get_center_coordinates(latA, longA, latB=None, longB=None):
     cord = (latA, longA)

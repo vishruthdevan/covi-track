@@ -5,6 +5,7 @@ from django.views.generic.base import View
 from .forms import UserForm, InfoForm
 from .models import UserProfile
 from django.contrib import messages
+from covidtracker.utils import get_ip_address, get_geo
 # Create your views here.
 
 class Register(View):
@@ -37,6 +38,7 @@ class Info(View):
     def post(self, request, *args, **kwargs):
         userprofile = UserProfile.objects.get(user=request.user)
         form = InfoForm(request.POST, instance=userprofile)
+        form.instance.latitude, form.instance.logitude = get_geo(get_ip_address(request))
         if form.is_valid():
             form.save()
             return redirect("covidtracker:index")
