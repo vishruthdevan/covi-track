@@ -19,7 +19,7 @@ class InfoForm(forms.ModelForm):
     
     class Meta:
         model = UserProfile
-        fields = ("address", "town", "state", "post_code", "country")
+        fields = ("contact_number", "address", "town", "state", "post_code", "country")
 
 
 class AuthForm(AuthenticationForm):
