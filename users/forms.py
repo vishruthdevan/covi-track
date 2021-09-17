@@ -9,7 +9,6 @@ from .models import UserProfile
 
 
 class UserForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, required=True, help_text="Enter your email address")
 
     class Meta:
         model = get_user_model()
@@ -31,7 +30,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-
+    
     class Meta:
         model = UserProfile
         fields = ("contact_number", "address", "town", "state", "post_code", "country")
@@ -48,4 +47,4 @@ class AuthForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password', )
+        fields = ('username', 'password')

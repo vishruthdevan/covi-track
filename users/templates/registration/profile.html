@@ -7,4 +7,10 @@ Profile
 {% block content %}
     <p>{{user.username}}</p>
     <p>{{user.email}}</p>
+    <form action="" method="POST">
+        {% load crispy_forms_tags %}
+        {{ u_form | crispy}}
+        {{ p_form | crispy}}
+        <button type="submit" class="btn btn-dark">Update</button>
+    </form>
 {% endblock content %}

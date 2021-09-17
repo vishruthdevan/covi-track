@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
-from .forms import UserForm, InfoForm
+from .forms import UserForm, InfoForm, UserUpdateForm, ProfileUpdateForm
 from .models import UserProfile
 from django.contrib import messages
 from covidtracker.utils import get_ip_address, get_geo
@@ -49,5 +49,8 @@ class Info(View):
 
 class Profile(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        return render(request, "registration/profile.html", {})
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.userprofile)
+        print(u_form, p_form)
+        return render(request, "registration/profile.html", {'u_form': u_form, 'p_form': p_form})
 
