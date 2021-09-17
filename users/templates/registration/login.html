@@ -7,7 +7,8 @@ Login
 {% block content %}
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% load crispy_forms_tags %}
+        {{ form | crispy }}
         <input type="submit" value="Login">
     </form>
 {% endblock content %}

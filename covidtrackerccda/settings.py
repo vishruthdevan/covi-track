@@ -34,12 +34,15 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'covidtracker.apps.CovidtrackerConfig',
     
+    'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',   
+    'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -141,3 +144,5 @@ LOGIN_REDIRECT_URL = "covidtracker:index"
 BASE_COUNTRY = "IN"
 
 GEOIP_PATH = BASE_DIR / 'geoip2'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
