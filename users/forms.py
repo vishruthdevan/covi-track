@@ -15,8 +15,23 @@ class UserForm(UserCreationForm):
         model = get_user_model()
         fields = ("username", "email", "password1", "password2")
 
+
 class InfoForm(forms.ModelForm):
     
+    class Meta:
+        model = UserProfile
+        fields = ("contact_number", "address", "town", "state", "post_code", "country")
+
+
+class UserUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = get_user_model()
+        fields = ("username", "email")
+
+
+class ProfileUpdateForm(forms.ModelForm):
+
     class Meta:
         model = UserProfile
         fields = ("contact_number", "address", "town", "state", "post_code", "country")
