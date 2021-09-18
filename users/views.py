@@ -54,3 +54,10 @@ class Profile(LoginRequiredMixin, View):
         print(u_form, p_form)
         return render(request, "registration/profile.html", {'u_form': u_form, 'p_form': p_form})
 
+    def post(self, request, *args, **kwargs):
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, instance=request.user.userprofile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+        return redirect('users:profile')
