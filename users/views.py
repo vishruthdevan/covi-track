@@ -16,7 +16,6 @@ class Register(View):
     
     def post(self, request, *args, **kwargs):
         form = UserForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             user = form.save()
             userprofile = UserProfile.objects.get(user=user)
@@ -51,7 +50,6 @@ class Profile(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.userprofile)
-        print(u_form, p_form)
         return render(request, "registration/profile.html", {'u_form': u_form, 'p_form': p_form})
 
     def post(self, request, *args, **kwargs):
