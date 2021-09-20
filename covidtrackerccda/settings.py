@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from . import google
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -137,7 +137,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_API_KEY = 'AIzaSyAeqhC54PRgxH-2WUdHZ5e1DXyeSmvwIpk'
+GOOGLE_API_KEY = google.key
 
 LOGIN_REDIRECT_URL = "covidtracker:index"
 
