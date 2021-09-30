@@ -1,33 +1,41 @@
 {% extends 'base.html' %}
 
 {% load static %}
-    {% block title %}Covid tracker{% endblock title %}
+{% block title %}Covid tracker{% endblock title %}
 
-{% block head %}  
-  {% comment %} <style>
-    #map {
-      height: 100%;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style> {% endcomment %}
+{% block head %}
+{% comment %} <style>
+  #map {
+    height: 100%;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style> {% endcomment %}
 {% endblock head %}
 
 {% block content %}
-    <p>This is the main page</p>
-    <p><a href="{% url 'project-home' %}">Home</a></p>
-    <p><a href="{% url 'users:profile' %}">Profile</a></p>
-    <div id="map" style="width:100%;height:400px;">
-    </div>
-
-
+<p>This is the main page</p>
+<p><a href="{% url 'project-home' %}">Home</a></p>
+<p><a href="{% url 'users:profile' %}">Profile</a></p>
+<div id="map" style="width:100%;height:400px;">
+</div>
 {% endblock content %}
 
 {% block footer %}
-  <script type="text/javascript">
+<script type="text/javascript">
   var google_api_key = "{{key|safe}}";
-  </script>
+  var coordinates = [];
+</script>
+
+{% for user in users %}
+<script type="text/javascript">
+  coordinates.push([{{ user.latitude }}, {{ user.longitude }}])
+</script>
+{% endfor %}
+
 {% endblock footer %}
