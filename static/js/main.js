@@ -6,7 +6,8 @@ script.async = false;
 function initMap(){}
 
 let map;
-
+let coordinates = JSON.parse(document.getElementById('coords').textContent);
+console.log(coordinates);
 window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 11.349223, lng: 76.792558},

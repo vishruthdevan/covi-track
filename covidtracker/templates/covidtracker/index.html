@@ -29,13 +29,8 @@
 {% block footer %}
 <script type="text/javascript">
   var google_api_key = "{{key|safe}}";
-  var coordinates = [];
 </script>
 
-{% for user in users %}
-<script type="text/javascript">
-  coordinates.push([{{ user.latitude }}, {{ user.longitude }}])
-</script>
-{% endfor %}
+{{ coords | json_script:"coords" }}
 
 {% endblock footer %}

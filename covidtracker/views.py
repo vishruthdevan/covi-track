@@ -8,6 +8,10 @@ from users.models import UserProfile
 # Create your views here.
 @login_required
 def index(request):
+    coords = list()
+    for i in UserProfile.objects.all().exclude(user=request.user):
+        coords.append([i.latitude, i.longitude])
+    print(coords)
     context = {"key" : settings.GOOGLE_API_KEY,
-                "users" : UserProfile.objects.all().exclude(user=request.user)}
+                "coords" : coords}
     return render(request, "covidtracker/index.html", context)
