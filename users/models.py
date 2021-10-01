@@ -6,8 +6,27 @@ class UserProfile(models.Model):
 	updated = models.DateTimeField(auto_now=True)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	
+	covidaffected = models.CharField(
+		max_length=1,
+		choices=[
+			('T', 'True'),
+			('F', 'False'),
+			('R', 'Recovered')
+		],
+	)
+
+	vaccinated = models.CharField(
+		max_length=1,
+		choices=[
+			('0', 'Not vaccinated'),
+			('1', 'One dose'),
+			('2', 'Two doses')
+		],
+	)
+
 	contact_number = models.CharField(verbose_name="Contact Number",max_length=13, null=True, blank=True)
 	email = models.EmailField(verbose_name='Email Address', null=True, blank=True)
+
 	address = models.CharField(verbose_name="Address",max_length=100, null=True, blank=True)
 	town = models.CharField(verbose_name="Town/City",max_length=100, null=True, blank=True)
 	state = models.CharField(verbose_name="State",max_length=100, null=True, blank=True)
