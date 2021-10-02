@@ -27,12 +27,15 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'covidtracker:index' %}">Tracker</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
           </li>
+          {% else %}
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="{% url 'login' %}">Login/Signup</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
