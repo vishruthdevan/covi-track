@@ -14,7 +14,7 @@ def index(request):
             coords.append({"lat" : i.latitude, "lng" : i.longitude, 'type' : 'current'})
         elif i.covidaffected == 'T':
             coords.append({"lat" : i.latitude, "lng" : i.longitude, 'type' : 'affected'})
-        elif i.covidaffected == 'F' or i.affected == 'R':
+        elif i.covidaffected == 'F' or i.covidaffected == 'R':
             if i.vaccinated == '0':
                 coords.append({"lat" : i.latitude, "lng" : i.longitude, 'type' : 'zerodose'})
             if i.vaccinated == '1':

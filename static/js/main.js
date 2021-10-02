@@ -36,7 +36,6 @@ window.initMap = function() {
              },
              map: map
         });
-        console.log(marker.icon);
     }
 };
 
