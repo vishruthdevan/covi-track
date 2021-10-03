@@ -10,7 +10,6 @@ from users.models import UserProfile
 def index(request):
     coords = list()
     category = request.GET.get('category', 'all')
-    print(category)
     if category == 'all':
         for i in UserProfile.objects.all():
             if request.user == i.user:
@@ -45,7 +44,9 @@ def index(request):
         for i in UserProfile.objects.filter(covidaffected='T'):
             coords.append({"lat" : i.latitude, "lng" : i.longitude, 'type' : 'affected'})
     
-    print(coords)
+    centre  = {'lat': UserProfile.objects.get(user=request.user).latitude, 'lng': UserProfile.objects.get(user=request.user).longitude}
     context = {"key" : settings.GOOGLE_API_KEY,
-               "coords" : coords}
+               "coords" : coords,
+               "centre" : centre}
+
     return render(request, "covidtracker/index.html", context)

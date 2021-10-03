@@ -80,6 +80,7 @@
   var google_api_key = "{{key|safe}}";
 </script>
 
+{{ centre | json_script:"centre"}}
 {{ coords | json_script:"coords" }}
 
 {% endblock footer %}

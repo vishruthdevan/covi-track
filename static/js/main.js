@@ -7,9 +7,11 @@ function initMap(){}
 
 let map;
 let coords = JSON.parse(document.getElementById('coords').textContent);
+let centre = JSON.parse(document.getElementById('centre').textContent);
+
 window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 11.349223, lng: 76.792558},
+        center: new google.maps.LatLng(centre.lat, centre.lng),
         zoom: 8,
     });
     const iconBase =
