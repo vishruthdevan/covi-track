@@ -24,15 +24,13 @@
 {% endblock head %}
 
 {% block content %}
-
-<div class="container">
   <div class="row">
-    <div class="col col-lg-10 col-md-10">
-      <div id="map" style="width:80%;height:600px;">
+    <div class="col-lg-9 col-md-9">
+      <div id="map" style="width:100%;height:600px;">
       </div>
     </div>
 
-    <div class="col col-lg-2 col-md-2">
+    <div class="col-lg-3 col-md-3">
       <p>Legend</p>
       <ul class="list-group">
         <a id="all" href="{% url 'covidtracker:index' %}?category=all" class="list-group-item d-flex justify-content-between align-items-center">All categories
@@ -68,7 +66,6 @@
       </ul>
     </div>
   </div>
-</div>
 
 {% endblock content %}
 
@@ -76,7 +73,10 @@
 <script type="text/javascript">
   var queryDict = {}
   location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
-  document.getElementById(queryDict.category).classList.add("active");
+  if(queryDict.category)
+    document.getElementById(queryDict.category).classList.add("active");
+  else
+    document.getElementById('all').classList.add("active");
   var google_api_key = "{{key|safe}}";
 </script>
 
