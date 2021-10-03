@@ -16,17 +16,67 @@
     padding: 0;
   }
 </style> {% endcomment %}
+<style>
+  .image-parent {
+    max-width: 40px;
+  }
+</style>
 {% endblock head %}
 
 {% block content %}
-<p>Legend</p>
 
-<div id="map" style="width:80%;height:600px;">
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-10 col-md-10">
+      <div id="map" style="width:80%;height:600px;">
+      </div>
+    </div>
+
+    <div class="col col-lg-2 col-md-2">
+      <p>Legend</p>
+      <ul class="list-group">
+        <a id="all" href="{% url 'covidtracker:index' %}?category=all" class="list-group-item d-flex justify-content-between align-items-center">All categories
+          <div class="image-parent">  
+          <img src="http://maps.google.com/mapfiles/kml/pal3/icon19.png" width="50" height="50" alt="">
+          </div>
+        </a>
+        <a id="user" href="{% url 'covidtracker:index' %}?category=user" class="list-group-item d-flex justify-content-between align-items-center">You
+          <div class="image-parent">
+          <img src="http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png" width="50" height="50" alt="">
+          </div>
+        </a>
+        <a id="zerodose" href="{% url 'covidtracker:index' %}?category=zerodose" class="list-group-item d-flex justify-content-between align-items-center">Not Vaccinated
+          <div class="image-parent">
+          <img src="http://maps.google.com/mapfiles/kml/paddle/orange-circle.png" width="50" height="50" alt="">
+          </div>
+        </a>
+        <a id="onedose" href="{% url 'covidtracker:index' %}?category=onedose" class="list-group-item d-flex justify-content-between align-items-center">One dose
+          <div class="image-parent">
+          <img src="http://maps.google.com/mapfiles/kml/paddle/grn-blank.png" width="50" height="50" alt="">
+          </div>
+        </a>
+        <a id="twodoses" href="{% url 'covidtracker:index' %}?category=twodoses" class="list-group-item d-flex justify-content-between align-items-center">Two doses
+          <div class="image-parent">
+          <img src="http://maps.google.com/mapfiles/kml/paddle/grn-circle.png" width="50" height="50" alt="">
+          </div>
+        </a>
+        <a id="affected" href="{% url 'covidtracker:index' %}?category=affected" class="list-group-item d-flex justify-content-between align-items-center">Covid affected
+          <div class="image-parent">
+          <img src="http://maps.google.com/mapfiles/kml/paddle/red-circle.png" width="50" height="50" alt="">
+          </div>
+        </a>
+      </ul>
+    </div>
+  </div>
 </div>
+
 {% endblock content %}
 
 {% block footer %}
 <script type="text/javascript">
+  var queryDict = {}
+  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+  document.getElementById(queryDict.category).classList.add("active");
   var google_api_key = "{{key|safe}}";
 </script>
 
