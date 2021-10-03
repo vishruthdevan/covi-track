@@ -8,7 +8,6 @@ Profile
     <p>{{user.username}}</p>
     <p>{{user.email}}</p>
     <form action="" method="POST">
-      <fieldset>
         {% csrf_token %}
         {% load crispy_forms_tags %}
         {{ u_form | crispy}}
@@ -16,6 +15,5 @@ Profile
         <div class="my-3">
             <button type="submit" class="btn btn-dark">Update</button>
         </div>
-      </fieldset>
     </form>
 {% endblock content %}
