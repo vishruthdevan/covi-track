@@ -1,6 +1,7 @@
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key=' + google_api_key + '&callback=initMap';
+// script.src = 'https://maps.googleapis.com/maps/api/js?key=' + google_api_key + '&callback=initMap';
+// Commented the above line so that the map doesn't render too many times, the layout will remain the same though so it won't be a problem
 script.async = false;
 
 function initMap(){}
