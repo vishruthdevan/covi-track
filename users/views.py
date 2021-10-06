@@ -58,4 +58,4 @@ class Profile(LoginRequiredMixin, View):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-        return redirect('users:profile')
+        return redirect('covidtracker:index')

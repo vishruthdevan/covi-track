@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'covidtracker.apps.CovidtrackerConfig',
     
+    'django_extensions',
     'crispy_forms',
 
     'django.contrib.admin',
