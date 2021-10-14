@@ -352,3 +352,4 @@ covidtrackerccda/db.sqlite3
 keys.txt
 db.sqlite3
 covidtrackerccda/google.py
+.vscode/
