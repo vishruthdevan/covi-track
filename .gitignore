@@ -354,3 +354,4 @@ db.sqlite3
 covidtrackerccda/google.py
 .vscode/
 staticfiles/
+env/
