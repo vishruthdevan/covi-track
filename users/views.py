@@ -1,12 +1,15 @@
-from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
-from .forms import UserForm, InfoForm, UserUpdateForm, ProfileUpdateForm
+
+from covidtracker.utils import get_geo, get_ip_address
+
+from .forms import InfoForm, ProfileUpdateForm, UserForm, UserUpdateForm
 from .models import UserProfile
-from django.contrib import messages
-from covidtracker.utils import get_ip_address, get_geo
+
 # Create your views here.
 
 class Register(View):
@@ -38,14 +41,13 @@ class Info(View):
     def post(self, request, *args, **kwargs):
         userprofile = UserProfile.objects.get(user=request.user)
         form = InfoForm(request.POST, instance=userprofile)
-        form.instance.latitude, form.instance.logitude = get_geo(get_ip_address(request))
-        print(form.instance.latitude, form.instance.logitude)
+        form.instance.latitude, form.instance.longitude = get_geo(get_ip_address(request))
         if form.is_valid():
             form.save()
             return redirect("covidtracker:index")
         
         return render(request, 'registration/register_info.html', {'form': form})
-        
+
 
 class Profile(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):

@@ -4,6 +4,13 @@
 
 {% block content %}
   <h1>Covid Tracker Project</h1>
+  <h4>Made by: </h4>
+  <ul>
+    <li>Adarsh Agarwal (20BCE2446)</li>
+    <li>Siya Narang (20BCB0050)</li>
+    <li>Vishruth Devan (20BCE2953)</li>
+    <li>Ish Gupta (20BCE2394)</li>
+  </ul>
   {% if user.is_authenticated %}
     <p>Use the <a href="{% url 'covidtracker:index' %}">tracker</a></p>
     <p><a href="{% url 'logout' %}">Logout</a></p>
