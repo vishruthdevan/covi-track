@@ -5,17 +5,36 @@ Login
 {% endblock title %}
 
 {% block content %}
+<style>
+    .glass{
+    background: rgba(235, 229, 229, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(235, 229, 229, 0.42);
+    }
+</style>
+<br><br><br><br><br><br>
+
     <h2>Login</h2>
-    <div class="mt-3">
-        <form action="" method="POST">
+    <br>
+    <div class="glass" style="width: 360px;margin-left: 460px;height:300px;">
+    <div style="margin-right:20px; margin-left:20px; text-align: center;">
+        <div class="mt-3">
+        <form action="" method="POST" style="font-size: large;">
+            
             {% csrf_token %}
+            <br>
             {% load crispy_forms_tags %}
-            {{ form | crispy }}
+            {{ form | crispy }}   
+            <br><br>        
             <button class="btn btn-dark mt-3" type="submit">Log In</button>
         </form>
     </div>
-
+</div>
+</div>
     <div style="margin-top:20px;">
-        <p>Don't have an account? Register <a href="{% url 'users:register' %}">here</a></p>
+        <p>Don't have an account? Register <a style="color: white;"  href="{% url 'users:register' %}">here</a></p>
     </div>
 {% endblock content %}

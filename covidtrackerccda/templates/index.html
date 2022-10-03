@@ -3,18 +3,19 @@
 {% block title %}Welcome{% endblock title %}
 
 {% block content %}
+<br><br><br><br><br><br><br><br>
   <h1>Covid Tracker Project</h1>
   <h4>Made by: </h4>
-  <ul>
+  <ul style="list-style-type:none; font-size: large;">
     <li>Adarsh Agarwal (20BCE2446)</li>
     <li>Siya Narang (20BCB0050)</li>
     <li>Vishruth Devan (20BCE2953)</li>
     <li>Ish Gupta (20BCE2394)</li>
   </ul>
   {% if user.is_authenticated %}
-    <p>Use the <a href="{% url 'covidtracker:index' %}">tracker</a></p>
-    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <p style="color: rgb(14, 13, 13);">Use the <a style="color: rgb(14, 13, 13);" href="{% url 'covidtracker:index' %}">tracker</a></p>
+    <p><a style="color: rgb(13, 13, 13);" href="{% url 'logout' %}">Logout</a></p>
   {% else %}
-    <p>To use the tracker you need to <a href="{% url 'login' %}">login</a> or <a href="{% url 'users:register' %}">register</a> if you dont have an account</p>
+    <p style="font-size: large; color: rgb(16, 16, 16);">To use the tracker you need to <a style="color: rgb(7, 7, 7);"href="{% url 'login' %}">login</a> or <a style="color: rgb(12, 12, 12);" href="{% url 'users:register' %}">register</a> if you dont have an account</p>
   {% endif %}
 {% endblock content %}
