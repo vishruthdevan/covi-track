@@ -1,3 +1,16 @@
+<style>
+    .glass{
+    background: rgba(235, 229, 229, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(235, 229, 229, 0.42);
+    }
+    .form-text{
+        color: black;
+    }
+</style>
 {% extends 'base.html' %}
 
 {% block title %}
@@ -5,8 +18,11 @@ Profile
 {% endblock title %}
 
 {% block content %}
-    <p>{{user.username}}</p>
-    <p>{{user.email}}</p>
+<br>
+    <p style="margin-left: 70px;">{{user.username}}</p>
+    <p style="margin-left: 70px;">{{user.email}}</p>
+    <div class="glass" style="width: 450px;margin-left: 460px;height:750px;">
+    <div style="margin-right:20px; margin-left:20px; text-align: center;">
     <form action="" method="POST">
         {% csrf_token %}
         {% load crispy_forms_tags %}
@@ -16,4 +32,6 @@ Profile
             <button type="submit" class="btn btn-dark">Update</button>
         </div>
     </form>
+</div>
+</div>
 {% endblock content %}

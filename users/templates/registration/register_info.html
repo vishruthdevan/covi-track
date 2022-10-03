@@ -1,10 +1,25 @@
+<style>
+    .glass{
+    background: rgba(235, 229, 229, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(235, 229, 229, 0.42);
+    }
+</style>
 {% extends 'base.html' %}
 
 {% block content %}
+<br><br>
+    <div class="glass" style="width: 420px; margin-left: 460px;height:600px;">
+    <div style="margin-right:20px; margin-left:20px; text-align: center;">
     <form action="" method="POST">
         {% csrf_token %}
         {% load crispy_forms_tags %}
         {{ form | crispy }}
         <button class="btn btn-dark mt-3" type="submit">Register</button>
     </form>
+    </div>
+    </div>
 {% endblock content %}
