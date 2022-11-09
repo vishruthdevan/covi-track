@@ -13,7 +13,7 @@ console.log(centre);
 window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(centre.lat, centre.lng),
-        zoom: 4,
+        zoom: 6,
     });
     const iconBase =
     "http://maps.google.com/mapfiles/kml/";

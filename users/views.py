@@ -41,7 +41,7 @@ class Info(View):
     def post(self, request, *args, **kwargs):
         userprofile = UserProfile.objects.get(user=request.user)
         form = InfoForm(request.POST, instance=userprofile)
-        form.instance.latitude, form.instance.longitude = 0, 0 #get_geo(get_ip_address(request))
+        form.instance.latitude, form.instance.longitude = get_geo(get_ip_address("182.79.4.248"))
         if form.is_valid():
             form.save()
             return redirect("covidtracker:index")

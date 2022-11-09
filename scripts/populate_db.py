@@ -1,10 +1,12 @@
-from users.models import UserProfile
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 import random
 
+from django.contrib.auth.models import User
+
+from users.models import UserProfile
+
+
 def run():
-    for i in range(100):
+    for i in range(1000):
         username = 'user' + str(i)
         email = username + '@bruh.com'
         user = User.objects.create_user(username, email, 'helloVD@234')
@@ -19,7 +21,7 @@ def run():
         up.state = 'Nowhere again'
         up.post_code = '420420'
         up.country = 'India'
-        up.latitude = round(random.uniform(8, 32), 6)
-        up.longitude = round(random.uniform(72, 88), 6)
+        up.latitude = round(random.uniform(12.5, 13.5), 6)
+        up.longitude = round(random.uniform(78, 80), 6)
         up.save()
         print(i)
